@@ -67,5 +67,6 @@ model:
     cond_stage_config:
       target: ldm.modules.encoders.modules.BERTEmbedder
       params:
+        # device: cpu
         n_embed: 1280
         n_layer: 32

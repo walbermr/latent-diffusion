@@ -25,7 +25,6 @@ def load_model_from_config(config, ckpt, verbose=False):
         print("unexpected keys:")
         print(u)
 
-    model.cuda()
     model.eval()
     return model
 
@@ -108,7 +107,9 @@ if __name__ == "__main__":
     model = load_model_from_config(config, "models/ldm/text2img-large/model.ckpt")  # TODO: check path
 
     device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
+    # device = torch.device("cpu")
     model = model.to(device)
+    model.half()
 
     if opt.plms:
         sampler = PLMSSampler(model)

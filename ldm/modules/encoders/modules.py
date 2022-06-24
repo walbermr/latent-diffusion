@@ -88,7 +88,7 @@ class BERTEmbedder(AbstractEncoder):
 
     def forward(self, text):
         if self.use_tknz_fn:
-            tokens = self.tknz_fn(text)#.to(self.device)
+            tokens = self.tknz_fn(text).to(self.device)
         else:
             tokens = text
         z = self.transformer(tokens, return_embeddings=True)
